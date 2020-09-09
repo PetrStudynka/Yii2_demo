@@ -1,9 +1,37 @@
-version: '2'
+version: "2"
 services:
   php:
     image: yiisoftware/yii2-php:7.1-apache
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
+    container_name: "php_yii"
     ports:
-      - '8000:80'
+      - "8000:80"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:5.7.31
+    container_name: "db_mysql"
+    restart: always
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  my-db:
+
+networks:
+  backend:
+    driver: bridge
