@@ -14,7 +14,7 @@ Localhost:
 
 Docker:
 
-`docker-composer up --build`
+`docker-compose up --build`
 
 ### Useful db commands
 
