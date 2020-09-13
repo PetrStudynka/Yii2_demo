@@ -2,28 +2,27 @@
 
 Yii2 demo
 
-## Setup
+### Setup
 
 Without docker change dsn in /config/db.php
 
-## Run
+### Run
 
 Localhost:
 
 `php yii serve`
 
-or
 Docker:
 
 `docker-composer up --build`
 
-## Useful db commands
+### Useful db commands
 
 Migration for DB init
 
 `php yii migrate/fresh (prompt - yes,yes)`
 
-or use included dump.sql
+With included dump.sql
 
 `docker exec -i db_mysql mysql -uroot -proot db < dump.sql`
 
